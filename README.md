@@ -12,6 +12,34 @@ If you maintain a fork of any npm/GitHub SDK, you know the pain: upstream ships 
 
 ---
 
+## Quick start
+
+```bash
+# Install
+npm install --save-dev sdk-upstream-sync
+
+# Set required env vars
+export UPSTREAM_REPO=original-org/javascript-sdk
+export GITHUB_TOKEN=ghp_...   # for API access
+
+# Run sync from your fork directory
+npx sdk-upstream-sync
+
+# Or add to package.json scripts:
+# "sync": "UPSTREAM_REPO=original-org/sdk node src/upstream-sync.mjs"
+```
+
+Required environment variables:
+```bash
+UPSTREAM_REPO=org/sdk-name          # required: upstream GitHub repo
+GITHUB_TOKEN=ghp_...                # recommended: avoids rate limits
+UPSTREAM_BRANCH=main                # optional, default: main
+MAX_FILES=20                        # optional, auto-apply threshold
+MAX_LOC=600                         # optional, auto-apply threshold
+```
+
+---
+
 ## How it works
 
 1. **Fetch** upstream SHA — exits cleanly if already synced
@@ -90,15 +118,15 @@ npx sdk-upstream-sync
 
 ```bash
 # Run from your fork directory
-UPSTREAM_REPO=original-org/javascript-sdk sdk-sync
+UPSTREAM_REPO=original-org/javascript-sdk npx sdk-upstream-sync
 
 # With all options
-sdk-sync \
-  --upstream-repo original-org/javascript-sdk \
-  --upstream-branch main \
-  --local-path ./lib \
-  --max-files 20 \
-  --max-loc 600
+UPSTREAM_REPO=original-org/javascript-sdk \
+  UPSTREAM_BRANCH=main \
+  LOCAL_MIRROR_DIR=./lib \
+  MAX_FILES=20 \
+  MAX_LOC=600 \
+  node src/upstream-sync.mjs
 ```
 
 ### Environment variables
@@ -106,7 +134,7 @@ sdk-sync \
 ```bash
 export UPSTREAM_REPO=original-org/javascript-sdk
 export UPSTREAM_BRANCH=main
-export LOCAL_PATH=./lib
+export LOCAL_MIRROR_DIR=./lib
 export MAX_FILES=20
 export MAX_LOC=600
 export GITHUB_TOKEN=ghp_...    # for private repos and higher rate limits
@@ -126,27 +154,6 @@ sync/
 ├── local.contract.json     ← local fork API surface
 ├── contract.diff.json      ← set differences (added/removed exports & methods)
 └── report.md               ← human-readable investigation report
-```
-
-### Example `report.md`
-
-```markdown
-# SDK Upstream Sync Report
-
-**Status**: INVESTIGATE
-**Upstream SHA**: a1b2c3d → e4f5g6h
-**Files changed**: 28 (threshold: 20)
-
-## Breaking changes
-- Removed export: `createSession` from `auth.js`
-- Removed method: `Client.prototype.retry`
-
-## Safe additions
-- New export: `createSessionV2` from `auth.js`
-- New method: `Client.prototype.retryWithBackoff`
-
-## Recommendation
-Manual review required. Removed exports may affect consumers.
 ```
 
 ---
@@ -181,16 +188,6 @@ const result = await syncUpstream({
 });
 
 console.log(result.status);   // 'auto_applied' | 'investigation_required' | 'already_up_to_date'
-
-// Contract extraction only
-const contract = await extractContract({ repoPath: './lib' });
-console.log(contract.exports);   // ['createClient', 'AuthClient', ...]
-console.log(contract.methods);   // ['Client.prototype.request', ...]
-
-// Diff two contracts
-const diff = diffContracts(upstreamContract, localContract);
-console.log(diff.breaking);     // removed exports/methods
-console.log(diff.safe);         // added exports/methods
 ```
 
 ---
@@ -213,3 +210,26 @@ PRs welcome. Run tests with `npm test`.
 ## License
 
 MIT © [Nometria](https://nometria.com)
+
+---
+
+## Example output
+
+Running `node --test tests/upstream-sync.test.mjs`:
+
+```
+✔ UPSTREAM_REPO env var is read correctly (0.380166ms)
+✔ LOCAL_MIRROR_DIR defaults to ./sdk-mirror (0.063ms)
+✔ MAX_FILES is parsed as integer (0.06675ms)
+✔ MAX_LOC is parsed as integer (0.054833ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59.318041
+```
+
+See `examples/sample-report.md` for a realistic sync report and `examples/sample-contract.json` for what a contract file looks like.

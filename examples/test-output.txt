@@ -1,0 +1,12 @@
+✔ UPSTREAM_REPO env var is read correctly (0.380166ms)
+✔ LOCAL_MIRROR_DIR defaults to ./sdk-mirror (0.063ms)
+✔ MAX_FILES is parsed as integer (0.06675ms)
+✔ MAX_LOC is parsed as integer (0.054833ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59.318041
