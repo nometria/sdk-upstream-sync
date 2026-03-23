@@ -1,0 +1,23 @@
+# Example: add to .github/workflows/sync-upstream.yml
+name: Sync upstream SDK
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'   # every Monday at 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync upstream SDK
+        uses: YOUR_ORG/sdk-upstream-sync@v1
+        with:
+          upstream_repo: 'original-org/javascript-sdk'
+          local_path: './lib'
+          max_files: '20'
+          max_loc: '600'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create_pr: 'true'

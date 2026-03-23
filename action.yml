@@ -1,0 +1,52 @@
+name: SDK Upstream Sync
+description: >
+  Contract-aware sync of a local SDK fork with an upstream npm package.
+  Auto-applies safe changes (≤20 files, ≤600 LOC, no breaking changes).
+  Opens an investigation report for everything else.
+
+author: Nometria
+
+inputs:
+  upstream_repo:
+    description: 'Upstream GitHub repo (e.g. org/javascript-sdk)'
+    required: true
+  upstream_branch:
+    description: 'Upstream branch to track'
+    required: false
+    default: 'main'
+  local_path:
+    description: 'Path to the local SDK fork directory'
+    required: false
+    default: '.'
+  max_files:
+    description: 'Max files changed for auto-apply (default: 20)'
+    required: false
+    default: '20'
+  max_loc:
+    description: 'Max lines changed for auto-apply (default: 600)'
+    required: false
+    default: '600'
+  github_token:
+    description: 'GitHub token for reading upstream repo and opening PRs'
+    required: false
+    default: ${{ github.token }}
+  create_pr:
+    description: 'Open a PR with changes instead of committing directly'
+    required: false
+    default: 'false'
+
+outputs:
+  synced:
+    description: 'true if changes were applied'
+  status:
+    description: 'already_up_to_date | auto_applied | investigation_required | error'
+  report_path:
+    description: 'Path to the generated sync report'
+
+runs:
+  using: 'node20'
+  main: 'src/upstream-sync.mjs'
+
+branding:
+  icon: 'refresh-cw'
+  color: 'blue'

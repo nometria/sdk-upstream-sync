@@ -1,0 +1,50 @@
+{
+  "name": "sdk-upstream-sync",
+  "version": "1.0.0",
+  "description": "Contract-aware sync tool for SDK forks. Auto-applies safe upstream changes. Flags breaking ones. CLI and GitHub Action.",
+  "type": "module",
+  "bin": {
+    "sdk-sync": "./src/upstream-sync.mjs"
+  },
+  "exports": {
+    ".": "./src/upstream-sync.mjs",
+    "./diff": "./src/diff-contracts.mjs",
+    "./contracts": {
+      "upstream": "./src/extract-upstream-contract.mjs",
+      "local": "./src/extract-local-contract.mjs"
+    }
+  },
+  "files": [
+    "src/",
+    "action.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/",
+    "prepublishOnly": "npm test",
+    "sync": "node src/upstream-sync.mjs",
+    "diff": "node src/diff-contracts.mjs"
+  },
+  "keywords": [
+    "sdk", "fork", "sync", "upstream", "github-action",
+    "breaking-change", "api-contract", "maintenance", "devops", "cli"
+  ],
+  "license": "MIT",
+  "author": "Nometria <hello@nometria.com>",
+  "homepage": "https://github.com/nometria/sdk-upstream-sync#readme",
+  "bugs": {
+    "url": "https://github.com/nometria/sdk-upstream-sync/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nometria/sdk-upstream-sync.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

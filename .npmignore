@@ -1,0 +1,7 @@
+tests/
+.github/
+*.test.js
+sync/
+.env*
+.DS_Store
+node_modules/
