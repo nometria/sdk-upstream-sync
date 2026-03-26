@@ -23,7 +23,7 @@ export UPSTREAM_REPO=original-org/javascript-sdk
 export GITHUB_TOKEN=ghp_...   # for API access
 
 # Run sync from your fork directory
-npx sdk-upstream-sync
+npx sdk-sync
 
 # Or add to package.json scripts:
 # "sync": "UPSTREAM_REPO=original-org/sdk node src/upstream-sync.mjs"
@@ -111,14 +111,14 @@ jobs:
 npm install -g @nometria-ai/sdk-upstream-sync
 
 # Or run without installing
-npx @nometria-ai/sdk-upstream-sync
+npx sdk-sync
 ```
 
 ### Usage
 
 ```bash
 # Run from your fork directory
-UPSTREAM_REPO=original-org/javascript-sdk npx sdk-upstream-sync
+UPSTREAM_REPO=original-org/javascript-sdk npx sdk-sync
 
 # With all options
 UPSTREAM_REPO=original-org/javascript-sdk \

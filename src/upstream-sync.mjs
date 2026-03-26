@@ -19,6 +19,31 @@ import { applySelectiveUpdates } from './apply-selective-updates.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 
+// ── Help flag ────────────────────────────────────────────────────────────────
+const _args = process.argv.slice(2);
+if (_args.includes('--help') || _args.includes('-h')) {
+  console.log(`sdk-sync — contract-aware fork maintenance tool
+
+Usage:
+  npx sdk-sync
+
+Auto-applies safe upstream changes. Flags breaking ones.
+
+Environment variables:
+  UPSTREAM_REPO      GitHub repo to track, e.g. "org/sdk" (required)
+  UPSTREAM_BRANCH    Branch to track (default: main)
+  LOCAL_PATH         Path to local fork directory (default: cwd)
+  MAX_FILES          Auto-apply threshold: max files changed (default: 20)
+  MAX_LOC            Auto-apply threshold: max LOC changed (default: 600)
+  GITHUB_TOKEN       GitHub token for private repos / rate limits
+  SYNC_DIR           Where to write reports (default: ./sync)
+
+Examples:
+  UPSTREAM_REPO=org/sdk npx sdk-sync
+  UPSTREAM_REPO=org/sdk UPSTREAM_BRANCH=v2 npx sdk-sync`);
+  process.exit(0);
+}
+
 // ── Config (all overridable via env) ─────────────────────────────────────────
 const UPSTREAM_REPO   = process.env.UPSTREAM_REPO   || (() => { throw new Error('UPSTREAM_REPO is required. Set env var or pass --upstream-repo'); })();
 const UPSTREAM_BRANCH = process.env.UPSTREAM_BRANCH || 'main';
