@@ -1,21 +1,11 @@
 # sdk-upstream-sync
 
+Built by the [Nometria](https://nometria.com) team — we take AI-built apps to production.
+
 [![npm version](https://img.shields.io/npm/v/%40nometria-ai%2Fsdk-upstream-sync.svg)](https://www.npmjs.com/package/@nometria-ai/sdk-upstream-sync)
 [![npm downloads](https://img.shields.io/npm/dm/%40nometria-ai%2Fsdk-upstream-sync.svg)](https://www.npmjs.com/package/@nometria-ai/sdk-upstream-sync)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-<div align="center">
-
-**[Nometria](https://nometria.com)** takes AI-built apps to production on AWS — secure, scalable, ready for real users.
-
-<sub><i>When you fork an SDK, upstream changes drift. We built this to keep our internal forks in sync -- then realized every team maintaining a fork needs this.</i></sub>
-
-[![Deploy with Nometria](https://img.shields.io/badge/Deploy%20with-Nometria-111827?style=for-the-badge)](https://nometria.com)
-
-</div>
-
----
 
 > Contract-aware fork maintenance for **any language**. Auto-applies safe upstream changes. Flags breaking ones.
 
@@ -289,6 +279,3 @@ PRs welcome. Run tests with `npm test`.
 
 MIT © [Nometria](https://nometria.com)
 
----
-
-<p align="center">Made with ❤️ by <a href="https://nometria.com">Nometria</a> — deploy AI apps to production in one click</p>
