@@ -1,5 +1,5 @@
 /**
- * Rust / Cargo ecosystem — contract extraction.
+ * Rust / Cargo ecosystem - contract extraction.
  *
  * Scans for: pub fn, pub struct, pub enum, pub trait, pub mod, pub type.
  */

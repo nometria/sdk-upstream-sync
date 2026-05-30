@@ -1,5 +1,5 @@
 /**
- * npm / JS / TS ecosystem — contract extraction.
+ * npm / JS / TS ecosystem - contract extraction.
  *
  * Scans for: export function, export const, export class, export default,
  *            module.exports, re-exports (export { … } from …).

@@ -16,18 +16,18 @@
 | Status | ⚠️ MANUAL REVIEW REQUIRED |
 
 Auto-apply threshold: ≤20 files, ≤600 LOC, 0 breaking changes.
-This sync has **2 breaking changes** — manual review required.
+This sync has **2 breaking changes** - manual review required.
 
 ---
 
 ## Breaking changes (require manual action)
 
-### 1. `SupabaseClient.from()` — method removed
+### 1. `SupabaseClient.from()` - method removed
 - **Upstream:** Method removed in favor of `SupabaseClient.schema()`
 - **Impact:** All callers using `supabase.from('table')` need migration to `supabase.schema('public').from('table')`
 - **Files affected:** `src/lib/SupabaseClient.ts`
 
-### 2. `GoTrueClient.signIn()` — signature changed
+### 2. `GoTrueClient.signIn()` - signature changed
 - **Upstream:** Parameter `email` renamed to `credentials.email`
 - **Impact:** Breaking change for all auth callers
 - **Files affected:** `src/lib/GoTrueClient.ts`

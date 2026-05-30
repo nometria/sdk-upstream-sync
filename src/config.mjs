@@ -74,7 +74,7 @@ export function loadConfig(cliFlags = {}) {
 export function initConfig(upstream) {
   const target = join(process.cwd(), CONFIG_FILENAME);
   if (existsSync(target)) {
-    console.log(`⚠️  ${CONFIG_FILENAME} already exists — skipping.`);
+    console.log(`⚠️  ${CONFIG_FILENAME} already exists - skipping.`);
     return target;
   }
 

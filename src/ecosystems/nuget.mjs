@@ -1,5 +1,5 @@
 /**
- * C# / .NET / NuGet ecosystem — contract extraction.
+ * C# / .NET / NuGet ecosystem - contract extraction.
  *
  * Scans for: public class, public interface, public struct, public enum,
  *            public methods, public properties.

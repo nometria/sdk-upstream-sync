@@ -1,5 +1,5 @@
 /**
- * Go ecosystem — contract extraction.
+ * Go ecosystem - contract extraction.
  *
  * In Go, anything starting with an uppercase letter is exported.
  */

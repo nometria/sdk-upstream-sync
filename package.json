@@ -1,6 +1,6 @@
 {
   "name": "@nometria-ai/sdk-upstream-sync",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Contract-aware fork maintenance for any language (npm/pip/Go/Rust/Java/C#). Auto-applies safe changes. Flags breaking ones.",
   "type": "module",
   "bin": {

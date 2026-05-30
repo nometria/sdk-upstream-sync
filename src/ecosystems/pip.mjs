@@ -1,5 +1,5 @@
 /**
- * pip / Python ecosystem — contract extraction.
+ * pip / Python ecosystem - contract extraction.
  *
  * Scans for: __all__, public functions/classes (no _ prefix),
  *            __init__.py re-exports.

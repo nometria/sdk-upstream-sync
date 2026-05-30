@@ -1,6 +1,6 @@
 # sdk-upstream-sync
 
-Built by the [Nometria](https://nometria.com) team. We help developers take apps built with AI tools (Lovable, Bolt, Base44, Replit) to production — handling deployment to AWS, security, scaling, and giving you full code ownership. [Learn more →](https://nometria.com)
+Built by the [Nometria](https://nometria.com) team. We help developers take apps built with AI tools (Lovable, Bolt, Base44, Replit) to production - handling deployment to AWS, security, scaling, and giving you full code ownership. [Learn more →](https://nometria.com)
 
 [![npm version](https://img.shields.io/npm/v/%40nometria-ai%2Fsdk-upstream-sync.svg)](https://www.npmjs.com/package/@nometria-ai/sdk-upstream-sync)
 [![npm downloads](https://img.shields.io/npm/dm/%40nometria-ai%2Fsdk-upstream-sync.svg)](https://www.npmjs.com/package/@nometria-ai/sdk-upstream-sync)
@@ -9,7 +9,7 @@ Built by the [Nometria](https://nometria.com) team. We help developers take apps
 
 > Contract-aware fork maintenance for **any language**. Auto-applies safe upstream changes. Flags breaking ones.
 
-Maintaining a fork of a third-party SDK, an internal shared library, or a vendored dependency? This tool diffs API contracts between upstream and your local version, auto-applies small safe changes, and generates an investigation report for anything risky — across **npm, pip, Go, Rust, Java, and C#**.
+Maintaining a fork of a third-party SDK, an internal shared library, or a vendored dependency? This tool diffs API contracts between upstream and your local version, auto-applies small safe changes, and generates an investigation report for anything risky - across **npm, pip, Go, Rust, Java, and C#**.
 
 ---
 
@@ -90,7 +90,7 @@ Ecosystem is auto-detected from your project files (`package.json` → npm, `pyp
 
 | Field | Default | Description |
 |-------|---------|-------------|
-| `upstream` | — | Upstream GitHub repo (`org/repo`). **Required**. |
+| `upstream` | - | Upstream GitHub repo (`org/repo`). **Required**. |
 | `branch` | `main` | Upstream branch to track |
 | `ecosystem` | `auto` | `auto` \| `npm` \| `pip` \| `go` \| `cargo` \| `maven` \| `nuget` |
 | `ignore` | `[]` | Glob patterns to skip during contract scanning |
@@ -146,7 +146,7 @@ jobs:
 
 | Input | Required | Default | Description |
 |-------|----------|---------|-------------|
-| `upstream_repo` | yes | — | Upstream GitHub repo |
+| `upstream_repo` | yes | - | Upstream GitHub repo |
 | `upstream_branch` | no | `main` | Branch to track |
 | `local_path` | no | `.` | Path to local fork |
 | `max_files` | no | `20` | Auto-apply file threshold |
@@ -182,7 +182,7 @@ company/platform-sdk (upstream)
 
 Each team runs `sdk-sync` weekly. When Platform ships a new method, all forks get it automatically. When Platform removes a deprecated method, each team gets a report before anything breaks.
 
-**Works with any language** — the Platform SDK can be Python, Go, Java, or anything else.
+**Works with any language** - the Platform SDK can be Python, Go, Java, or anything else.
 
 ### 3. Multi-language monorepo
 
@@ -221,7 +221,7 @@ npx sdk-sync report
 
 ### 6. Compliance & audit trail
 
-In regulated industries, every change to a dependency must be documented. `sdk-sync` generates `sync/report.md` with a full diff of every export and method change, with timestamps and commit SHAs — ready for audit.
+In regulated industries, every change to a dependency must be documented. `sdk-sync` generates `sync/report.md` with a full diff of every export and method change, with timestamps and commit SHAs - ready for audit.
 
 ---
 

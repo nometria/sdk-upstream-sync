@@ -1,5 +1,5 @@
 /**
- * Java / Maven / Gradle ecosystem — contract extraction.
+ * Java / Maven / Gradle ecosystem - contract extraction.
  *
  * Scans for: public class, public interface, public enum, public methods.
  */

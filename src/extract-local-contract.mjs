@@ -11,9 +11,9 @@ import { getEcosystem } from './ecosystems/index.mjs';
 
 /**
  * @param {object} opts
- * @param {string} opts.localPath   — root of the local fork
- * @param {string} opts.ecosystem   — npm | pip | go | cargo | maven | nuget
- * @param {string[]} opts.ignore    — glob-like prefixes to skip
+ * @param {string} opts.localPath   - root of the local fork
+ * @param {string} opts.ecosystem   - npm | pip | go | cargo | maven | nuget
+ * @param {string[]} opts.ignore    - glob-like prefixes to skip
  */
 export function extractLocalContract(opts = {}) {
   const localPath = opts.localPath || process.cwd();

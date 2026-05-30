@@ -1,5 +1,5 @@
 /**
- * Ecosystem router — returns the right extractor for the detected ecosystem.
+ * Ecosystem router - returns the right extractor for the detected ecosystem.
  */
 
 import * as npm from './npm.mjs';

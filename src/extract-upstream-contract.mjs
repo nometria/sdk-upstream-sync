@@ -8,11 +8,11 @@
 import { getEcosystem } from './ecosystems/index.mjs';
 
 /**
- * @param {string} repo     — "org/repo"
- * @param {string} sha      — commit SHA to inspect
+ * @param {string} repo     - "org/repo"
+ * @param {string} sha      - commit SHA to inspect
  * @param {object} opts
- * @param {string} opts.ecosystem   — npm | pip | go | cargo | maven | nuget
- * @param {string[]} opts.ignore    — glob-like prefixes to skip
+ * @param {string} opts.ecosystem   - npm | pip | go | cargo | maven | nuget
+ * @param {string[]} opts.ignore    - glob-like prefixes to skip
  * @param {string|null} opts.githubToken
  */
 export async function extractUpstreamContract(repo, sha, opts = {}) {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * sdk-sync — contract-aware fork maintenance tool.
+ * sdk-sync - contract-aware fork maintenance tool.
  *
  * Subcommands:
  *   (none)    Run a sync (default)
@@ -25,7 +25,7 @@ const args = process.argv.slice(2);
 const subcommand = (args[0] && !args[0].startsWith('-')) ? args[0] : 'sync';
 
 if (args.includes('--help') || args.includes('-h')) {
-  console.log(`sdk-sync — contract-aware fork maintenance
+  console.log(`sdk-sync - contract-aware fork maintenance
 
 Usage:
   npx sdk-sync              Sync your fork with upstream (default)
@@ -87,7 +87,7 @@ const UPSTREAM_JSON = join(syncDir, 'upstream.json');
 
 // ── Main sync ────────────────────────────────────────────────────────────────
 async function main() {
-  console.log(`🔄 sdk-sync — ${config.upstream} (${config.ecosystem})`);
+  console.log(`🔄 sdk-sync - ${config.upstream} (${config.ecosystem})`);
 
   if (!existsSync(syncDir)) mkdirSync(syncDir, { recursive: true });
 
@@ -150,13 +150,13 @@ async function main() {
   const thresholds = checkThresholds(diff);
 
   if (thresholds.safe) {
-    console.log('✅ Safe — applying updates...');
+    console.log('✅ Safe - applying updates...');
     await applySelectiveUpdates(diff);
     writeFileSync(UPSTREAM_JSON, JSON.stringify({ sha: latestSha, syncedAt: new Date().toISOString() }));
     console.log('🎉 Sync complete.');
     return { status: 'auto_applied', sha: latestSha };
   } else {
-    console.log('⚠️  Exceeds safety thresholds — review sync/report.md');
+    console.log('⚠️  Exceeds safety thresholds - review sync/report.md');
     return { status: 'investigation_required', sha: latestSha, thresholds };
   }
 }
@@ -237,7 +237,7 @@ ${(diff.breakingChanges || []).map(b => `- ${b.description}`).join('\n') || 'Non
 
 ## Action Required
 
-${diff.breakingChanges?.length > 0 ? '⚠️ **Breaking changes detected** — manual review required before applying.' : '✅ Safe to apply automatically.'}
+${diff.breakingChanges?.length > 0 ? '⚠️ **Breaking changes detected** - manual review required before applying.' : '✅ Safe to apply automatically.'}
 `;
 }
 
